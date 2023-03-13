@@ -34,11 +34,14 @@
             OutPut = new Label();
             label3 = new Label();
             folderBrowserDialog1 = new FolderBrowserDialog();
+            level = new TextBox();
+            richTextBox1 = new RichTextBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // FPath
             // 
-            FPath.Location = new Point(62, 51);
+            FPath.Location = new Point(98, 51);
             FPath.Name = "FPath";
             FPath.Size = new Size(687, 23);
             FPath.TabIndex = 0;
@@ -47,15 +50,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 54);
+            label1.Font = new Font("Microsoft YaHei UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(23, 49);
             label1.Name = "label1";
-            label1.Size = new Size(33, 17);
+            label1.Size = new Size(69, 25);
             label1.TabIndex = 1;
-            label1.Text = "Path";
+            label1.Text = "路径：";
             // 
             // File2Folder
             // 
-            File2Folder.Location = new Point(23, 107);
+            File2Folder.Location = new Point(23, 140);
             File2Folder.Name = "File2Folder";
             File2Folder.Size = new Size(102, 27);
             File2Folder.TabIndex = 2;
@@ -75,17 +79,45 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft YaHei UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(4, 193);
+            label3.Location = new Point(23, 187);
             label3.Name = "label3";
             label3.Size = new Size(69, 25);
             label3.TabIndex = 4;
             label3.Text = "输出：";
+            // 
+            // level
+            // 
+            level.Location = new Point(98, 90);
+            level.Name = "level";
+            level.Size = new Size(50, 23);
+            level.TabIndex = 5;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(98, 187);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(687, 251);
+            richTextBox1.TabIndex = 6;
+            richTextBox1.Text = "";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft YaHei UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(23, 90);
+            label2.Name = "label2";
+            label2.Size = new Size(69, 25);
+            label2.TabIndex = 7;
+            label2.Text = "层数：";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(richTextBox1);
+            Controls.Add(level);
             Controls.Add(label3);
             Controls.Add(OutPut);
             Controls.Add(File2Folder);
@@ -108,5 +140,8 @@
 
         private Label label3;
         private FolderBrowserDialog folderBrowserDialog1;
+        private TextBox level;
+        private RichTextBox richTextBox1;
+        private Label label2;
     }
 }
