@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace Filer
 {
     public partial class Form1 : Form
@@ -18,16 +20,37 @@ namespace Filer
             {
                 var path = this.FPath.Text;
                 DirectoryInfo root = new DirectoryInfo(path);
-                FileInfo[] files = root.GetFiles();
-                foreach (FileInfo file in files)
+                DirectoryInfo[] directoryInfos = root.GetDirectories();
+                if (level.Text == "2")
                 {
-                    var HouZhui = Path.GetExtension(file.FullName);
-                    var newWenJianJia = file.FullName.Replace(HouZhui, "");
-                    if (!Directory.Exists(newWenJianJia))
+                    foreach (DirectoryInfo directoryInfo in directoryInfos)
                     {
-                        Directory.CreateDirectory(newWenJianJia);
+                        FileInfo[] files = directoryInfo.GetFiles();
+                        foreach (FileInfo file in files)
+                        {
+                            var HouZhui = Path.GetExtension(file.FullName);
+                            var newWenJianJia = file.FullName.Replace(HouZhui, "");
+                            if (!Directory.Exists(newWenJianJia))
+                            {
+                                Directory.CreateDirectory(newWenJianJia);
+                            }
+                            file.MoveTo($@"{newWenJianJia}\{file.Name}");
+                        }
                     }
-                    file.MoveTo($@"{newWenJianJia}\{file.Name}");
+                }
+                if (level.Text == "1")
+                {
+                    FileInfo[] files = root.GetFiles();
+                    foreach (FileInfo file in files)
+                    {
+                        var HouZhui = Path.GetExtension(file.FullName);
+                        var newWenJianJia = file.FullName.Replace(HouZhui, "");
+                        if (!Directory.Exists(newWenJianJia))
+                        {
+                            Directory.CreateDirectory(newWenJianJia);
+                        }
+                        file.MoveTo($@"{newWenJianJia}\{file.Name}");
+                    }
                 }
                 this.OutPut.Text = "³É¹¦";
 
